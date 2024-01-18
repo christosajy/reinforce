@@ -1,0 +1,79 @@
+
+<!DOCTYPE html>
+
+{% extends 'index.html' %}
+{% block content %}
+
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <div class="card card1">
+        <div class="card-body">
+          <h4 class="card-title">Update Worker Registration</h4>
+
+          <form class="forms-sample" action="{% url 'update_fun' userid=users.id %}" method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+
+            <div class="form-group">
+              <label>Edit Name</label>
+              <input type="text" class="form-control" placeholder="Name" name="rname" value="{{users.Name}}">
+            </div>
+
+            <div class="form-group">
+              <label>Work Category</label>
+                <select class="form-control" name="rcat">
+                  <option>{{users.Category}}</option>
+                  <!-- <option>Select Category</option> -->
+                  <option>Electrician</option>
+                  <option>Plumber</option>
+                  <option>Others(specify in Description)</option>
+                </select>
+              </div>
+
+            <div class="form-group">
+              <label>Edit Mobile</label>
+              <input type="text" class="form-control" placeholder="Mobile" name="rmob" value="{{users.Mobile}}">
+          </div>
+
+            <div class="form-group">
+              <label>Edit Email address</label>
+              <input type="email" class="form-control" placeholder="Email" name="remail" value="{{users.Email}}">
+            </div>
+
+            <div class="form-group">
+              <label>Edit Password</label>
+              <input type="text" class="form-control" placeholder="Password" name="rpswd" value="{{users.Password}}">
+            </div>
+
+            <div class="form-group">
+              <label>Description</label>
+              <textarea class="form-control" rows="4" name="rtext">{{users.Description}}</textarea>
+            </div>
+
+            <div class="form-group">
+                <label>Edit Uploaded Image: </label>
+                <img src="{{users.Image.url}}" height="70px" width="100px"><br>
+                <input type="file" name="rimg">
+            </div>
+
+            <button type="submit" class="btn btn-primary mr-2">Update</button>
+            <button class="btn cur-p btn-danger">Cancel</button>
+          </form>
+        </div>
+      </div>
+
+      <style>
+        .card1{
+            margin-top: 30px;
+        }
+      </style>
+
+</body>
+</html>
+{% endblock %}

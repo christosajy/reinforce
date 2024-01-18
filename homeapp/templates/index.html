@@ -1,0 +1,328 @@
+
+<!DOCTYPE html>
+<!-- USER INTERFACE -->
+
+{% load static %}
+
+<html lang="en">
+
+
+   <head>
+      <!-- basic -->
+      <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <!-- mobile metas -->
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+      <!-- site metas -->
+      <title>[MAIN] - Pluto - Responsive Bootstrap Admin Panel Templates</title>
+      <meta name="keywords" content="">
+      <meta name="description" content="">
+      <meta name="author" content="">
+      <!-- site icon -->
+      <link rel="icon" href="{% static 'images/fevicon.png' %}" type="image/png"/>
+      <!-- bootstrap css -->
+      <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}"/>
+      <!-- responsive css -->
+      <link rel="stylesheet" href="{% static 'css/responsive.css' %}"/>
+      <!-- color css -->
+      <link rel="stylesheet" href="{% static 'css/colors.css' %}"/>
+      <!-- select bootstrap -->
+      <link rel="stylesheet" href="{% static 'css/bootstrap-select.css' %}"/>
+      <!-- scrollbar css -->
+      <link rel="stylesheet" href="{% static 'css/perfect-scrollbar.css' %}"/>
+      <!-- custom css -->
+      <link rel="stylesheet" href="{% static 'css/custom.css' %}"/>
+
+      <!-- main css file -->
+      <link rel="stylesheet" href="{% static 'style.css' %}"/>
+      <!-- icon files css -->
+      <link rel="stylesheet" href="{% static 'css/font-awesome.min.css' %}" type="text/css">
+
+      <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+      <![endif]-->
+
+   </head>
+
+   <body class="dashboard dashboard_1">
+      <div class="full_container">
+         <div class="inner_container">
+            <!-- Sidebar  -->
+            <nav id="sidebar">
+               <div class="sidebar_blog_1">
+
+                  <div class="sidebar-header">
+
+                     <div class="logo_section">
+                        <a href="#">
+                           <img class="logo_icon img-responsive" src="{% static 'images/logo/nwlogo.png' %}" alt="#" />
+                        </a>
+                     </div>
+                     
+                  </div>
+
+                  <div class="sidebar_user_info">
+                     <div class="icon_setting"></div>
+                     <div class="user_profle_side">
+                        <div class="user_img">
+                           <img class="img-responsive" src="{% static 'images/layout_img/ironman.jpg' %}" alt="#" />
+                        </div>
+
+                        <div class="user_info">
+
+                           {% if request.session.username %}
+
+                           <h6>{{request.session.username}}</h6>
+
+                           <p><span class="online_animation"></span> ONLINE</p>
+
+                           {% endif %}
+
+                        </div>
+
+                     </div>
+                  </div>
+
+               </div>
+
+               <div class="sidebar_blog_2">
+                  <h4>
+                     <a href="{% url 'generalFun' %}" style="color: #dc3545; cursor: text;">General</a>
+                  </h4>
+
+                  <ul class="list-unstyled components">
+
+                     <li class="active">
+
+                        <a href="#dashboard" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                           <i class="fa fa-dashboard yellow_color"></i> 
+                           <span style="font-weight: 400;">WORKERS</span>
+                        </a>
+
+                        <ul class="collapse list-unstyled" id="dashboard">
+
+                           <li><a href="{% url 'add_fun' %}"> <span>Worker Registration</span></a></li>
+                           <li><a href="{% url 'disp_fun' %}"> <span>Display Workers</span></a></li>
+                        </ul>
+                     </li>
+
+                     <li>
+                        <a href="#element" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                           <i class="fa fa-diamond purple_color"></i> <span style="font-weight: 400;">CATEGORY</span></a>
+                        <ul class="collapse list-unstyled" id="element">
+                           <li><a href="{% url 'addCat' %}"> <span>Add Category</span></a></li>
+                           <li><a href="{% url 'disCat' %}"> <span>Display Category</span></a></li>
+                        </ul>
+                     </li>
+
+                     <li>
+                        <a href="#apps" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><i class="fa fa-object-group blue2_color">
+                           </i> <span style="font-weight: 400;">PRODUCTS</span></a>
+                        <ul class="collapse list-unstyled" id="apps">
+                           <li><a href="{% url 'addProduct' %}"> <span>Add Products</span></a></li>
+                           <li><a href="{% url 'displayProducts' %}"> <span>Display Products</span></a></li>
+                        </ul>
+                     </li>
+
+                     <li>
+                        <a href="#req" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><i class="fa fa-object-group blue2_color">
+                           </i> <span style="font-weight: 400;">USERS</span></a>
+                           
+                        <ul class="collapse list-unstyled" id="req">
+                           <li><a href="{% url 'reqservice' %}"> <span>User Requests</span></a></li>
+                           <li><a href="{% url 'getIn_display' %}"> <span>User Feedbacks</span></a></li>
+                           <li><a href="{% url 'userdetails' %}"> <span>User Details</span></a></li>
+                        </ul>
+                     </li>
+
+                    <!-- <li>
+                        <a href="contact.html">
+                        <i class="fa fa-paper-plane red_color"></i> <span>Contacts</span></a>
+                    </li>  -->
+
+                     <!-- <li class="active">
+                        <a href="#additional_page" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><i class="fa fa-clone yellow_color"></i>
+                            <span>User Feedbacks</span></a>
+                        <ul class="collapse list-unstyled" id="additional_page">
+                           <li>
+                              <a href="profile.html"> <span></span></a>
+                           </li>
+                           <li>
+                              <a href="project.html"> <span>Projects</span></a>
+                           </li>
+                           <li>
+                              <a href="login.html"> <span>Login</span></a>
+                           </li>
+                           <li>
+                              <a href="404_error.html"> <span>404 Error</span></a>
+                           </li>
+                        </ul>
+                     </li> -->
+
+                     <!-- <li><a href="map.html"><i class="fa fa-map purple_color2"></i> <span>Map</span></a></li>
+                     <li><a href="charts.html"><i class="fa fa-bar-chart-o green_color"></i> <span>Charts</span></a></li>
+                     <li><a href="settings.html"><i class="fa fa-cog yellow_color"></i> <span>Settings</span></a></li> -->
+
+                  </ul>
+               </div>
+            </nav>
+            <!-- end sidebar -->
+            <!-- right content -->
+
+            <div id="content">
+               <!-- topbar -->
+               <div class="topbar">
+                  <nav class="navbar navbar-expand-lg navbar-light">
+                     <div class="full">
+
+                        <!-- <button type="button" id="sidebarCollapse" class="sidebar_toggle">
+                           <i class="fa fa-bars icn"></i>
+                        </button> -->
+
+                        <div class="logo_section">
+                           <a href="{% url 'index_fun' %}">
+                              <img class="img-responsive" src="{% static 'images/logo/nwlogo.png' %}" alt="#" width="120px" height="50px"/>
+                           </a>
+                        </div>
+               
+                        <div class="right_topbar">
+                           <div class="icon_info">
+                              <ul class="user_profile_dd">
+                                 <li>
+
+                                    <a class="dropdown-toggle" data-toggle="dropdown">
+                                       
+                                       <span class="name_user"><i class="fa fa-cog"></i>&nbsp; Settings</span>
+                                    </a>
+
+                                    <div class="dropdown-menu">
+                                       <a class="dropdown-item" href="profile.html">My Profile</a>
+                                       <a class="dropdown-item" href="settings.html">Settings</a>
+                                       <a class="dropdown-item" href="help.html">Help</a>
+                                       <a class="dropdown-item" href="{% url 'adminLogout' %}"><span>Log Out&nbsp;</span><i class="fa fa-sign-out"></i></a>
+                                    </div>
+
+                                 </li>
+                              </ul>
+                           </div>
+                        </div>
+
+                     </div>
+                  </nav>
+               </div>
+               <!-- end topbar -->
+               <!-- dashboard inner -->
+               
+               
+               <div class="midde_cont">
+                  {% block content %}
+
+                  <div class="container-fluid">
+                     <!-- graph -->
+                     <div class="row column2 graph margin_bottom_30">
+                        <div class="col-md-l2 col-lg-12">
+                           <div class="white_shd full">
+                              <div class="full graph_head">
+                                 <div class="heading1 margin_0">
+                                    <h2>Extra Area Chart</h2>
+                                 </div>
+                              </div>
+                              <div class="full graph_revenue">
+                                 <div class="row">
+                                    <div class="col-md-12">
+                                       <div class="content">
+                                          <div class="area_chart">
+                                             <canvas height="120" id="canvas"></canvas>
+                                          </div>
+                                       </div>
+                                    </div>
+                                 </div>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                     <!-- end graph -->
+
+                  </div>
+
+                  {% endblock %}
+               </div>
+               
+
+                  <!-- footer -->
+                  <div class="container-fluid">
+                     <div class="footer">
+                        <p>Copyright © 2018 Designed by html.design. All rights reserved.<br><br>
+                           Distributed By: <a href="https://themewagon.com/">ThemeWagon</a>
+                        </p>
+                     </div>
+                  </div>
+               </div>
+               <!-- end dashboard inner -->
+            </div>
+         </div>
+
+         <style>
+            #sidebar{
+               background-image: url({% static 'images/layout_img/pattern.png' %});
+            }
+         </style>
+
+
+      <!-- jQuery -->
+      <script src="{% static 'js/jquery.min.js' %}"></script>
+      <script src="{% static 'js/popper.min.js' %}"></script>
+      <script src="{% static 'js/bootstrap.min.js' %}"></script>
+      <!-- wow animation -->
+      <script src="{% static 'js/animate.js' %}"></script>
+      <!-- select country -->
+      <script src="{% static 'js/bootstrap-select.js' %}"></script>
+      <!-- owl carousel -->
+      <script src="{% static 'js/owl.carousel.js' %}"></script> 
+      <!-- chart js -->
+      <script src="{% static 'js/Chart.min.js' %}"></script>
+      <script src="{% static 'js/Chart.bundle.min.js' %}"></script>
+      <script src="{% static 'js/utils.js' %}"></script>
+      <script src="{% static 'js/analyser.js' %}"></script>
+      <!-- nice scrollbar -->
+      <script src="{% static 'js/perfect-scrollbar.min.js' %}"></script>
+      <script>
+         var ps = new PerfectScrollbar('#sidebar');
+      </script>
+      <!-- custom js -->
+      <script src="{% static 'js/custom.js' %}"></script>
+      <script src="{% static 'js/chart_custom_style1.js' %}"></script>
+
+            
+   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>   
+   <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>   
+   <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+   {% if messages %}
+     {% for i in messages %}
+       {% if i.tags == 'success' %}
+         <script>
+           swal('{{i}}', '', 'success')
+         </script>
+         {% elif i.tags == 'error' %}
+         <script>
+           swal('{{i}}', '', 'error')
+         </script>
+         {% elif i.tags == 'warning' %}
+         <script>
+           swal('{{i}}', '', 'warning')
+         </script>
+         {% else %}
+         <script>
+           swal('{{i}}', '', 'info')
+         </script>
+       {% endif %}
+     {% endfor %}
+   {% endif %}     
+         
+
+
+   </body>
+</html>

@@ -1,0 +1,57 @@
+
+<!DOCTYPE html>
+{% extends 'index.html' %}
+{% block content %}
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <div class="card" style="margin-top: 30px;">
+        <div class="card-body">
+          <h4 class="card-title">ADD PRODUCTS</h4>
+    
+          <form class="forms-sample" action="{% url 'updateProducts' ProId=product.id %}" method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="form-group">
+                <label>Product Category</label>
+                  <select class="form-control" name="upcat">
+                    <option>{{product.ProCat_Name}}</option>
+                    {% for i in cat %}
+                    <option>{{i.Cat_Name}}</option>
+                    {% endfor %}
+                  </select>
+                </div>
+
+            <div class="form-group">
+              <label>Product Name</label>
+              <input type="text" class="form-control" placeholder="Name" name="upname" value="{{product.ProName}}"> 
+            </div>
+            <div class="form-group">
+              <label>Product Price</label>
+              <input type="text" class="form-control" placeholder="Price" name="uprice" value="{{product.ProPrice}}">
+            </div>
+            
+            <div class="form-group">
+              <label>Product Description</label>
+              <textarea class="form-control" rows="4" name="updesc">{{product.Pro_Desc}}</textarea>
+            </div>
+
+            <div class="form-group">
+                <img src="{{product.Pro_Image.url}}" width="130px" height="80px" style="border: 1px solid rgb(148, 148, 148);">
+                <label>File upload</label>
+                <input type="file" name="upimg" >
+              </div>
+      
+            <button type="submit" class="btn btn-primary me-2">Submit</button> &nbsp; &nbsp;
+            <button class="btn cur-p btn-danger">Cancel</button>
+          </form>
+        </div>
+    </div>
+</body>
+</html>
+{% endblock %}

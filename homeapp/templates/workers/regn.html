@@ -1,0 +1,105 @@
+
+<!DOCTYPE html>
+
+{% extends 'index.html' %}
+{% block content %}
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <div class="card card1">
+        <div class="card-body">
+          <h4 class="card-title">WORKERS REGISTRATION</h4>
+
+          <form class="forms-sample" action="{% url 'view_fun' %}" method="POST" enctype="multipart/form-data">
+          {% csrf_token %}
+            <div class="form-group">
+              <label>Name</label>
+              <input type="text" class="form-control" placeholder="Name" name="rname">
+            </div>
+
+            <div class="form-group">
+              <label>Work Category</label>
+                <select class="form-control" name="rcat">
+                  <option>Select Category</option>
+                  {% for i in cat %}
+                  <option>{{i.Cat_Name}}</option>
+                  {% endfor %}
+                </select>
+              </div>
+
+            <div class="form-group">
+                <label>Contact Number</label>
+                <input type="text" class="form-control" placeholder="Mobile" name="rmob">
+            </div>  
+
+            <div class="form-group">
+              <label>Email address</label>
+              <input type="email" class="form-control" placeholder="Email" name="remail">
+            </div>
+
+            <div class="form-group">
+              <label>Password</label>
+              <input type="password" class="form-control" placeholder="Password" name="rpswd">
+            </div>
+
+            <div class="form-group">
+              <label>Description</label>
+              <textarea class="form-control" rows="4" name="rtext">Describe about yourself</textarea>
+            </div>
+
+            <div class="form-group">
+                <label>Upload Image [Optional]</label><br>
+                <input type="file" name="rimg">
+            </div>
+
+            <button type="submit" class="btn btn-primary mr-2">Submit</button>
+            <button class="btn cur-p btn-danger">Cancel</button>
+          </form>
+        </div>
+    </div>
+
+      <style>
+        .card1{
+            margin-top: 30px;
+        }
+      </style>
+
+      <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>   
+      <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>   
+      <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+      {% if messages %}
+        {% for i in messages %}
+          {% if i.tags == 'success' %}
+            <script>
+              swal('{{i}}', '', 'success')
+            </script>
+            {% elif i.tags == 'error' %}
+            <script>
+              swal('{{i}}', '', 'error')
+            </script>
+            {% elif i.tags == 'warning' %}
+            <script>
+              swal('{{i}}', '', 'warning')
+            </script>
+            {% else %}
+            <script>
+              swal('{{i}}', '', 'info')
+            </script>
+          {% endif %}
+        {% endfor %}
+      {% endif %}     
+            
+
+
+
+</body>
+</html>
+{% endblock %}

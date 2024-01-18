@@ -1,0 +1,96 @@
+
+<!DOCTYPE html>
+
+{% extends 'index.html' %}
+{% block content %}
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+   <div class="col-md-12">
+        <div class="white_shd full margin_bottom_30">
+           <div class="full graph_head">
+              <div class="heading1 margin_0">
+                 <h2>Display Workers</h2>
+              </div>
+           </div>
+           <div class="table_section padding_infor_info">
+              <div class="table-responsive-sm">
+                 <table class="table">
+                    <thead>
+                       <tr>
+                          <th>Name</th>
+                          <th>Category</th>
+                          <th>Mobile</th>
+                          <th>Email</th>
+                          <th>Password</th>
+                          <th>Description</th>
+                          <th>Image</th>
+                       </tr>
+                    </thead>
+                    <tbody>
+                     {% for i in users %}
+                       <tr>
+                          <td>{{i.Name}}</td>
+                          <td>{{i.Category}}</td>
+                          <td>{{i.Mobile}}</td>
+                          <td>{{i.Email}}</td>
+                          <td>{{i.Password}}</td>
+                          <td>{{i.Description}}</td>
+                          <td>
+                            <img src="{{i.Image.url}}" height="80px" width="120px">
+                          </td>
+                          <td>
+                              <form action="{% url 'edit_fun' userid=i.id %}">
+                                 <button type="submit" class="btn btn-primary mr-2">Edit</button>
+                              </form>
+                          </td>
+                          <td>
+                           <form action="{% url 'del_fun' userid=i.id %}">
+                              <button type="submit" class="btn cur-p btn-danger">Delete</button>
+                           </form>
+                           </td>
+                       </tr>
+                     {% endfor %}
+                    </tbody>
+                 </table>
+              </div>
+           </div>
+        </div>
+   </div>
+
+
+   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>   
+   <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>   
+   <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+      {% if messages %}
+        {% for i in messages %}
+          {% if i.tags == 'success' %}
+            <script>
+              swal('{{i}}', '', 'success')
+            </script>
+            {% elif i.tags == 'error' %}
+            <script>
+              swal('{{i}}', '', 'error')
+            </script>
+            {% elif i.tags == 'warning' %}
+            <script>
+              swal('{{i}}', '', 'warning')
+            </script>
+            {% else %}
+            <script>
+              swal('{{i}}', '', 'info')
+            </script>
+          {% endif %}
+        {% endfor %}
+      {% endif %}  
+
+</body>
+</html>
+{% endblock %}
